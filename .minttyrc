@@ -1,0 +1,12 @@
+BoldAsFont=-1
+ThemeFile=dracula
+Transparency=low
+Font=Source Code Pro
+FontHeight=15
+Locale=zh_CN
+Charset=GBK
+Scrollbar=none
+Language=zh_CN
+Term=xterm-256color
+Columns=91
+Rows=25
