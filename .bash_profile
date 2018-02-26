@@ -49,7 +49,7 @@ alias tree="tree -C"
 
 # Make some of the file manipulation programs verbose
 alias mv="mv -v"
-alias rm="rm -vi"
+alias rm="rm -v"
 alias cp="cp -v"
 
 alias :q='exit'
