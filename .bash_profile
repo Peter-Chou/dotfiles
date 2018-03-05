@@ -27,7 +27,7 @@ blue=$(tput setaf 45)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-PS1="\[$bold\]\n\[$orange\]\u\[$white\]@\[$yellow\]\h\[$white\] in \[$green\]\w\$(__git_ps1)
+PS1="\[$bold\]\n\[$orange\]\u\[$white\]@\[$yellow\]\h\[$white\] in \[$green\]\W\$(__git_ps1)
 \[$white\]~> \[$reset\]"
 export PS1
 
