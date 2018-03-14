@@ -27,7 +27,7 @@ blue=$(tput setaf 45)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
-PS1="\[$bold\]\n\[$orange\]\u\[$white\]@\[$yellow\]\h\[$white\] in \[$green\]\W\$(__git_ps1)
+PS1="\[$bold\]\n\[$orange\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\$(__git_ps1)
 \[$white\]~> \[$reset\]"
 export PS1
 
@@ -41,7 +41,9 @@ export PS1
 # PS1+="\[\n${white}\]\$ \[${reset}\]";
 # export PS1;﻿
 
-alias ls="ls -AlhF --color=auto"
+alias ls="ls --color=auto"
+alias ll="ls -AlhF --color=auto"
+alias la='ls -A --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
