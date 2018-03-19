@@ -41,6 +41,8 @@ export PS1
 # PS1+="\[\n${white}\]\$ \[${reset}\]";
 # export PS1;﻿
 
+alias c="clear"
+alias ..="cd .."
 alias ls="ls --color=auto"
 alias ll="ls -AlhF --color=auto"
 alias la='ls -A --color=auto'
@@ -48,6 +50,10 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias tree="tree -C"
+# create parent directory on demand
+alias mkdir="mkdir -pv"
+# continue getting a partial-downloaded file
+alias wget="wget -c"
 
 # Make some of the file manipulation programs verbose
 alias mv="mv -v"
