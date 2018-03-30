@@ -65,4 +65,6 @@ alias :q='exit'
 alias e="emacsclientw -n"
 alias ec="emacsclientw -n -c"
 
+alias ssh-aws="ssh -i /cygdrive/c/Users/zhou_/.ssh/udacity.pem"
+
 export PATH="/cygdrive/c/Anaconda3:$PATH"
