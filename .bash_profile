@@ -68,11 +68,17 @@ alias ec="emacsclientw -n -c"
 alias bp=". ~/.bash_profile"
 alias br=". ~/.bashrc"
 
-# use ssh-aws IPv4 address to access aws virtual machine. example
+# use ssh-aws IPv4 address to access aws virtual machine. example:
 # ssh-aws 54.186.182.19
 function ssh-aws()
 {
-	ssh -i /cygdrive/c/Users/zhou_/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
+	ssh -i ${HOME}/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
+}
+
+# example: sftp-aws 54.186.182.19
+function sftp-aws()
+{
+	sftp -i ${HOME}/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
 }
 
 export PATH="/cygdrive/c/Anaconda3:$PATH"
