@@ -1,7 +1,7 @@
 BoldAsFont=-1
 Transparency=medium
-Font=Source Code Pro
-FontHeight=15
+Font=CamingoCode
+FontHeight=18
 Locale=zh_CN
 Charset=GBK
 Scrollbar=none

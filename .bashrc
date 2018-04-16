@@ -1,3 +1,3 @@
 if [ -f ~/.bash_profile ]; then
-	source ~/.bash_profile
+	. ~/.bash_profile
 fi
