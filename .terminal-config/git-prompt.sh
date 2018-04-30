@@ -301,13 +301,14 @@ __git_ps1 ()
 
 	white=$(tput setaf 15)
 	blue_z=$(tput setaf 45)
+	reset_z=$(tput sgr0)
 
 	local exit=$?
 	local pcmode=no
 	local detached=no
 	local ps1pc_start='\u@\h:\w '
 	local ps1pc_end='\$ '
-	local printf_format="$white on$blue_z (%s)"
+	local printf_format="$white on$blue_z (%s)$reset_z"
 
 	case "$#" in
 		2|3)	pcmode=yes
