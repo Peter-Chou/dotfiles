@@ -92,9 +92,45 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c="clear"
+alias ..="cd .."
+alias ls="ls --color=auto"
+alias ll="ls -AlhF --color=auto"
+alias la='ls -A --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias tree="tree -C"
+# create parent directory on demand
+alias mkdir="mkdir -pv"
+# continue getting a partial-downloaded file
+alias wget="wget -c"
+# Make some of the file manipulation programs verbose
+alias mv="mv -v"
+alias rm="rm -v"
+alias cp="cp -v"
+alias :q='exit'
 alias e="emacsclient -n"
 alias ec="emacsclient -n -c"
-
-if [ -f ~/.dir_colors ]; then  
+alias zp=". ~/.zprofile"
+alias zr=". ~/.zshrc"
+# use customized dir color
+if [ -f ~/.dir_colors ]; then
   eval `dircolors ~/.dir_colors`
+fi
+# use ssh-aws IPv4 address to access aws virtual machine. example:
+# ssh-aws 54.186.182.19
+function ssh-aws()
+{
+    ssh -i ${HOME}/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
+}
+
+# example: sftp-aws 54.186.182.19
+function sftp-aws()
+{
+    sftp -i ${HOME}/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
+}
+
+if [ -d "$HOME/anaconda3" ] && [[ ":$PATH:" != *":$HOME/anaconda3/bin:"* ]]; then
+    export PATH="$HOME/anaconda3/bin:$PATH"
 fi

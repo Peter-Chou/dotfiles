@@ -6,7 +6,3 @@ export LC_ALL="zh_CN.UTF-8"
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
-
-if [ -d "$HOME/anaconda3" ] && [[ ":$PATH:" != *":$HOME/anaconda3/bin:"* ]]; then
-    export PATH="$HOME/anaconda3/bin:$PATH"
-fi
