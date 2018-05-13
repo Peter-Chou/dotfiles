@@ -150,7 +150,6 @@ alias mkdir="mkdir -pv"
 alias wget="wget -c"
 # Make some of the file manipulation programs verbose
 alias mv="mv -v"
-alias rm="rm -v"
 alias cp="cp -v"
 alias :q='exit'
 alias e="emacsclient -n"
@@ -176,4 +175,8 @@ function sftp-aws()
 
 if [ -d "$HOME/anaconda3" ] && [[ ":$PATH:" != *":$HOME/anaconda3/bin:"* ]]; then
     export PATH="$HOME/anaconda3/bin:$PATH"
+fi
+
+if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
+  eval `dbus-launch fcitx > /tmp/starttmp.txt 2>&1`
 fi
