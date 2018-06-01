@@ -88,7 +88,6 @@ alias wget="wget -c"
 
 # Make some of the file manipulation programs verbose
 alias mv="mv -v"
-alias rm="rm -v"
 alias cp="cp -v"
 
 alias :q='exit'
