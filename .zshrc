@@ -178,5 +178,5 @@ if [ -d "$HOME/anaconda3" ] && [[ ":$PATH:" != *":$HOME/anaconda3/bin:"* ]]; the
 fi
 
 if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
-  eval `dbus-launch fcitx > /tmp/starttmp.txt 2>&1`
+  eval `dbus-launch fcitx > /dev/null 2>&1`
 fi

@@ -52,3 +52,4 @@ BoldWhite=235,219,178
 # BoldCyan=214,93,14
 # White=80,73,69
 # BoldWhite=40,40,40
+RightClickAction=paste
