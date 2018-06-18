@@ -60,6 +60,9 @@ ZSH_THEME="bira"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  autojump
+  # e= open emacsclient; te=open emacs in terminal
+  # emacs
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -152,8 +155,8 @@ alias wget="wget -c"
 alias mv="mv -v"
 alias cp="cp -v"
 alias :q='exit'
-alias e="emacsclient -n"
-alias ec="emacsclient -n -c"
+# alias e="emacsclient -n"
+# alias ec="emacsclient -n -c"
 alias zp=". ~/.zprofile"
 alias zr=". ~/.zshrc"
 # use customized dir color
