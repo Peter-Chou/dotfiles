@@ -299,9 +299,13 @@ __git_ps1 ()
 {
 	# preserve exit status
 
-	white=$(tput setaf 15)
-	blue_z=$(tput setaf 45)
-	reset_z=$(tput sgr0)
+	# white=$(tput setaf 15)
+	# blue_z=$(tput setaf 45)
+	# reset_z=$(tput sgr0)
+
+	reset_z="\e[0m"
+	blue_z="\e[1;34m"
+	white="\e[1;37m"
 
 	local exit=$?
 	local pcmode=no
