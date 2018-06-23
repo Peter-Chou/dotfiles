@@ -78,6 +78,9 @@ alias cp="cp -v"
 
 alias :q='exit'
 
+alias g="git"
+alias goto="git checkout"
+
 alias e="emacsclientw -n"
 alias ec="emacsclientw -n -c"
 

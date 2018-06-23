@@ -7,11 +7,11 @@
 
 [alias]
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	# Show the diff between the latest commit and the current state
-	d	= !"git diff"
-	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
-	di	= !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	g	= git
+	# # Show the diff between the latest commit and the current state
+	# d	= !"git diff"
+	# # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+	# di	= !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	d   = diff
 	cm	= commit
 	cl	= clone
 	br	= branch
