@@ -157,6 +157,10 @@ alias cp="cp -v"
 alias :q='exit'
 # alias e="emacsclient -n"
 # alias ec="emacsclient -n -c"
+
+alias g="git"
+alias goto="git checkout"
+
 alias zp=". ~/.zprofile"
 alias zr=". ~/.zshrc"
 # use customized dir color
