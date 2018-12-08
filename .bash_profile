@@ -101,4 +101,4 @@ function sftp-aws()
 }
 
 export TERM=xterm-256color
-export PATH="/cygdrive/c/Anaconda3:$PATH"
+
