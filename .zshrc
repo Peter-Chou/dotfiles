@@ -18,17 +18,42 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
 # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
 
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%F{white}"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%F{white} "
+
+# Add a space in the first prompt
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+# Visual customisation of the second prompt line
+local user_symbol="$"
+if [[ $(print -P "%#") =~ "#" ]]; then
+    user_symbol = "#"
+fi
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
+
 POWERLEVEL9K_TIME_FORMAT='%D{%m/%d %a %H:%M}'
+
+POWERLEVEL9K_STATUS_VERBOSE=false
+
 
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # POWERLEVEL9K_SHORTEN_DELIMITER=""
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir time vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status context dir dir_writable virtualenv vcs)
+
+# Disable dir/git icons
+# POWERLEVEL9K_HOME_ICON=''
+# POWERLEVEL9K_HOME_SUB_ICON=''
+# POWERLEVEL9K_FOLDER_ICON=''
+
+DISABLE_AUTO_TITLE="true"
+
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
 
 # ZSH_THEME="refined"
 # ZSH_THEME="robbyrussell"
@@ -89,7 +114,10 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   git
   dotenv
+  zsh-syntax-highlighting
 )
+
+
 
 source $ZSH/oh-my-zsh.sh
 
