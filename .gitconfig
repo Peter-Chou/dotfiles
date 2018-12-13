@@ -3,7 +3,7 @@
 	email = zhou_00009@126.com
 
 [core]
-	autocrlf = true
+	autocrlf = input
 	filemode = false
 
 [alias]
@@ -30,4 +30,4 @@
 	# accept-theirs = "!f() { git checkout --theirs -- \"${@:-.}\"; git add -u \"${@:-.}\"; }; f"
 	# tagcommit = !sh -c 'git rev-list $0 | head -n 1'
 [color]
-	ui = true
+	ui = always
