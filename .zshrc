@@ -11,7 +11,11 @@
 # ZSH_THEME="random"
 # ZSH_THEME="gnzh"
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='awesome-patched'
+
+if [ -v DISABLE_AWESOME_FONT ]; then;
+else
+    POWERLEVEL9K_MODE='awesome-patched';
+fi
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
@@ -34,7 +38,6 @@ POWERLEVEL9K_TIME_FORMAT='%D{%m/%d %a %H:%M}'
 
 POWERLEVEL9K_STATUS_VERBOSE=false
 
-
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
@@ -44,6 +47,10 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # POWERLEVEL9K_SHORTEN_DELIMITER=""
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status context dir dir_writable virtualenv vcs)
+
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+
 
 # Disable dir/git icons
 # POWERLEVEL9K_HOME_ICON=''
@@ -57,6 +64,8 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
 
 # ZSH_THEME="refined"
 # ZSH_THEME="robbyrussell"
+
+
 
 
 # Set list of themes to pick from when loading at random
