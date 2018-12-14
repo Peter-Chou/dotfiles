@@ -13,11 +13,15 @@
 	# # `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	# di	= !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	d   = diff
+	t = tag
 	cm	= commit
 	cl	= clone
-	br	= branch
+	br	= branch -v
 	st	= status
+	s = status -s
 	co	= checkout
+	rb = rebase
+	untrack = rm -r --cached
 	# sm	= submodule
 	# ci	= commit -a -v
 	unst = reset HEAD
@@ -26,8 +30,29 @@
 	clr	= clean -fdx -f
 	last	= log -1
 	slog	= log --pretty=oneline	
+
+	# fetch
+  	fetchall = fetch -v --all
+    # stash
+    ss = stash
+    sl = stash list
+    sa = stash apply
+
+
 	# accept-ours = "!f() { git checkout --ours -- \"${@:-.}\"; git add -u \"${@:-.}\"; }; f"
 	# accept-theirs = "!f() { git checkout --theirs -- \"${@:-.}\"; git add -u \"${@:-.}\"; }; f"
 	# tagcommit = !sh -c 'git rev-list $0 | head -n 1'
 [color]
 	ui = always
+    diff = auto
+    status = auto
+    grep = auto
+# [color "branch"]
+#     current = yellow reverse
+#     local = yellow
+#     remote = green
+# [color "diff"]
+#     meta = black bold
+#     old = black bold
+#     new = cyan bold
+#     frag = magenta bold
