@@ -8,8 +8,6 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="random"
-# ZSH_THEME="gnzh"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 if [ -v DISABLE_AWESOME_FONT ]; then;
@@ -17,16 +15,9 @@ else
     POWERLEVEL9K_MODE='awesome-patched';
 fi
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
-
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%F{white}"
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%F{white} "
-
 # Add a space in the first prompt
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+
 # Visual customisation of the second prompt line
 local user_symbol="$"
 if [[ $(print -P "%#") =~ "#" ]]; then
@@ -38,6 +29,7 @@ POWERLEVEL9K_TIME_FORMAT='%D{%m/%d %a %H:%M}'
 
 POWERLEVEL9K_STATUS_VERBOSE=false
 
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 POWERLEVEL9K_DISABLE_RPROMPT=true
@@ -51,22 +43,10 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status context dir dir_writable virtualenv vc
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
 
-
-# Disable dir/git icons
-# POWERLEVEL9K_HOME_ICON=''
-# POWERLEVEL9K_HOME_SUB_ICON=''
-# POWERLEVEL9K_FOLDER_ICON=''
-
 DISABLE_AUTO_TITLE="true"
 
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-
-# ZSH_THEME="refined"
-# ZSH_THEME="robbyrussell"
-
-
-
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -161,11 +141,14 @@ source $ZSH/oh-my-zsh.sh
 
 
 alias ..="cd .."
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # print out just the hidden files in the current working directory
-alias lh='ls -lisAd .[^.]*'
-alias ls="ls --color=auto"
-alias ll='ls -lisA --color=auto'
+alias lh='ls -lsAd .[^.]*'
+alias ls="ls --color"
+alias ll='ls -lsA --color'
 
 #  extract tgz / tar.gz files
 alias tart='tar -xvfz'
@@ -176,9 +159,9 @@ alias targ='tar -xzvf'
 #  extract bz2 files
 alias tarb='tar -xjvf'
 
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --color'
+alias fgrep='fgrep --color'
+alias egrep='egrep --color'
 
 # search the current directory for the specified filename or expression
 alias ff='find . -type f -iname'
