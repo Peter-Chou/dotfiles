@@ -3,7 +3,7 @@
 	email = zhou_00009@126.com
 
 [core]
-	autocrlf = input
+	autocrlf = false
 	filemode = false
 
 [alias]
@@ -16,6 +16,7 @@
 	t = tag
 	cm	= commit
 	cl	= clone
+	pu = push
 	br	= branch -v
 	st	= status
 	s = status -s
@@ -44,9 +45,9 @@
 	# tagcommit = !sh -c 'git rev-list $0 | head -n 1'
 [color]
 	ui = always
-    diff = auto
-    status = auto
-    grep = auto
+    diff = always
+    status = always
+    grep = always
 # [color "branch"]
 #     current = yellow reverse
 #     local = yellow
@@ -56,3 +57,5 @@
 #     old = black bold
 #     new = cyan bold
 #     frag = magenta bold
+[merge]
+	tool = code
