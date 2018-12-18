@@ -35,7 +35,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 # POWERLEVEL9K_SHORTEN_DELIMITER=""
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status context dir dir_writable virtualenv vcs)
@@ -103,6 +103,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
   git
   dotenv
+  emacs
   zsh-syntax-highlighting
 )
 
@@ -146,7 +147,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # print out just the hidden files in the current working directory
-alias lh='ls -lsAd .[^.]*'
+alias lh='ls -lsAd --color .[^.]*'
 alias ls="ls --color"
 alias ll='ls -lsA --color'
 
