@@ -1,0 +1,6 @@
+[flake8]
+  ignore =
+      # ignore not using 4 spaces
+      E111,
+      # ignore too long line
+      E501
