@@ -1,6 +1,8 @@
 [flake8]
   ignore =
-      # ignore not using 4 spaces
-      E111,
-      # ignore too long line
-      E501
+    # indentation is not a multiple of four,
+    E111,E114,
+    # ignore too long line
+    E501,
+    # visually indented line with same indent as next logical line,
+    E129
