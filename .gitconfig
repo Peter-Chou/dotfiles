@@ -44,10 +44,10 @@
 	# accept-theirs = "!f() { git checkout --theirs -- \"${@:-.}\"; git add -u \"${@:-.}\"; }; f"
 	# tagcommit = !sh -c 'git rev-list $0 | head -n 1'
 [color]
-	ui = always
-    diff = always
-    status = always
-    grep = always
+	ui = auto
+    # diff = always
+    # status = always
+    # grep = always
 # [color "branch"]
 #     current = yellow reverse
 #     local = yellow
