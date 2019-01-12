@@ -1,44 +1,3 @@
-# Enable tab completion
-source ~/.terminal-config/git-completion.bash
-
-# Change command prompt
-source ~/.terminal-config/git-prompt.sh
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-
-# if tput setaf 1 &> /dev/null; then
-# 	tput sgr0; # reset colors
-# 	bold=$(tput bold);
-# 	reset=$(tput sgr0);
-# 	# Solarized colors, taken from http://git.io/solarized-colors.
-# 	black=$(tput setaf 0);
-# 	blue=$(tput setaf 45);
-# 	cyan=$(tput setaf 37);
-# 	green=$(tput setaf 120);
-# 	orange=$(tput setaf 166);
-# 	purple=$(tput setaf 125);
-# 	red=$(tput setaf 124);
-# 	violet=$(tput setaf 61);
-# 	white=$(tput setaf 15);
-# 	yellow=$(tput setaf 228);
-# else
-# 	bold='';
-# 	reset="\e[0m";
-# 	black="\e[1;30m";
-# 	blue="\e[1;34m";
-# 	cyan="\e[1;36m";
-# 	green="\e[1;32m";
-# 	orange="\e[1;33m";
-# 	purple="\e[1;35m";
-# 	red="\e[1;31m";
-# 	violet="\e[1;35m";
-# 	white="\e[1;37m";
-# 	yellow="\e[1;33m";
-# fi;
-
-# PS1="\[$bold\]\n\[$orange\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\[$white\]\$(__git_ps1)
-# \[$white\]~> \[$reset\]"
-# export PS1
 
 bold='';
 reset="\e[0m";
@@ -53,9 +12,27 @@ violet="\e[1;35m";
 white="\e[1;37m";
 yellow="\e[1;33m";
 
-PS1="\[$bold\]\n\[$red\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\[$white\]\$(__git_ps1)
+PS1="\[$bold\]\n\[$red\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\[$white\]
 \[$blue\]~> \[$reset\]"
 export PS1
+
+# git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+# only enable bash-git-prompt within git repository
+GIT_PROMPT_ONLY_IN_REPO=1
+
+# uncomment to avoid setting virtual environment infos for node/python/conda environments
+GIT_PROMPT_WITH_VIRTUAL_ENV=0
+
+GIT_PROMPT_THEME=Solarized
+
+GIT_PROMPT_START="\[$red\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\[$white\]"
+GIT_PROMPT_END="\[$bold\]\n\[$blue\]~> \[$reset\]"
+
+source ~/.bash-git-prompt/gitprompt.sh
+
+if [ -f ~/.dir_colors ]; then
+  eval `dircolors ~/.dir_colors`
+fi
 
 # alias
 alias c="clear"
