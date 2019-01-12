@@ -57,5 +57,3 @@
 #     old = black bold
 #     new = cyan bold
 #     frag = magenta bold
-[merge]
-	tool = code
