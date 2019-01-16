@@ -1,15 +1,18 @@
 BoldAsFont=-1
 Transparency=medium
-Font=DejaVu Sans Mono for Powerline
+Font=Fira Code Retina
 FontHeight=18
 Locale=
 Charset=
 Scrollbar=none
-Language=zh_CN
+Language=en_US
 Term=xterm-256color
 Columns=86
 Rows=36
 RightClickAction=paste
+FontWeight=450
+# enable Ligatures
+LigaturesSupport=2
 
 # srcery theme
 BackgroundColour=28,27,25
@@ -74,4 +77,3 @@ BoldWhite=252,232,195
 # BoldCyan=214,93,14
 # White=80,73,69
 # BoldWhite=40,40,40
-
