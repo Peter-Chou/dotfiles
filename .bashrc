@@ -28,7 +28,11 @@ GIT_PROMPT_THEME=Solarized
 GIT_PROMPT_START="\[$bold\]\n\[$red\]\u\[$white\] at \[$yellow\]\h\[$white\] in \[$green\]\W\[$white\]"
 GIT_PROMPT_END="\[$bold\]\n\[$blue\]~> \[$reset\]"
 
-source ~/.bash-git-prompt/gitprompt.sh
+source ~/.bash-git-prompt/gitprompt.sh;
+
+if [[ -v DISABLE_GIT_PROMPT ]]; then
+    git_prompt_toggle;
+fi
 
 if [ -f ~/.dir_colors ]; then
   eval `dircolors ~/.dir_colors`
