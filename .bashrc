@@ -80,8 +80,10 @@ alias tree="tree -C"
 # continue getting a partial-downloaded file
 alias wget="wget -c"
 
-# git shortname
 alias g="git"
+alias c="code -r"
+# toggle bash git prompt
+alias bgp="declare -F git_prompt_toggle &>/dev/null && git_prompt_toggle || source ~/.bash-git-prompt/gitprompt.sh"
 
 # Make some of the file manipulation programs verbose
 alias mv="mv -v"
@@ -109,4 +111,3 @@ function sftp-aws()
 {
 	sftp -i ${HOME}/.ssh/udacity.pem -o StrictHostKeyChecking=no ubuntu@$1
 }
-
