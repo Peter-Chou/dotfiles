@@ -90,6 +90,12 @@ alias mv="mv -v"
 alias cp="cp -v"
 alias :q='exit'
 
+# conda alias
+# copy anaconda/etc/profile.d/conda.sh into msys64/etc/profile.d/ (windows)
+alias coa="conda activate"
+alias cod="conda deactivate"
+alias col="conda env list"
+
 # alias e="emacsclient -n"
 # alias ec="emacsclient -n -c"
 
