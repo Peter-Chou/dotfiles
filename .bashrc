@@ -95,6 +95,7 @@ alias :q='exit'
 alias coa="conda activate"
 alias cod="conda deactivate"
 alias col="conda env list"
+alias cor="conda env remove -y --name"
 
 # alias e="emacsclient -n"
 # alias ec="emacsclient -n -c"
