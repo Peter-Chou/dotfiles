@@ -16,10 +16,19 @@ insert_final_newline = true
 indent_style = space
 indent_size = 2
 
-# javascript, yaml
-[{.,}*.{js{,*},y{a,}ml}]
+# python 
+[*.py]
 indent_style = space
 indent_size = 2
+
+# javascript
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.{json,y{a,}ml}]
+indent_style = space
+indent_size = 4
 
 # markdown, txt
 [*.{md,txt}]
