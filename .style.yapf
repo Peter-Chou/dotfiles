@@ -1,4 +1,7 @@
 [style]
-# YAPF uses the pep8 style
-based_on_style = pep8
+# YAPF uses the google style
+based_on_style = google
 indent_width = 2
+
+# allow multi commands in one line separated by comma
+disable_ending_comma_heuristic = True
