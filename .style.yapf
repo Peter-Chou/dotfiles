@@ -2,6 +2,12 @@
 # YAPF uses the google style
 based_on_style = google
 indent_width = 2
+column_limit = 80
 
 # allow multi commands in one line separated by comma
 disable_ending_comma_heuristic = True
+
+split_arguments_when_comma_terminated = True
+
+# let short multi-line into one line e.g. if True: return 1
+join_multiple_lines = True
