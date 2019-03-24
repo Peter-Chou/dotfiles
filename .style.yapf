@@ -11,3 +11,6 @@ split_arguments_when_comma_terminated = True
 
 # let short multi-line into one line e.g. if True: return 1
 join_multiple_lines = True
+
+dedent_closing_brackets = True
+# coalesce_brackets = True
