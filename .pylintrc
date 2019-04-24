@@ -62,6 +62,9 @@ confidence=
 # --disable=W".
 disable=print-statement,
         bad-indentation,
+        bad-continuation,
+        protected-access,
+        missing-docstring,
         line-too-long,
         parameter-unpacking,
         unpacking-in-except,
