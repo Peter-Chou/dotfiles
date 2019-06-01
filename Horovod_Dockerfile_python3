@@ -14,13 +14,17 @@ ARG python=3.6
 ENV PYTHON_VERSION=${python}
 
 # make python3.6 available
-RUN echo "deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse" > /etc/apt/sources.list
-RUN echo "deb http://archive.ubuntu.com/ubuntu xenial-security main restricted universe multiverse" > /etc/apt/sources.list
-RUN echo "deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse" > /etc/apt/sources.list
-RUN echo "deb http://archive.ubuntu.com/ubuntu xenial-backports main restricted universe multiverse" > /etc/apt/sources.list
+RUN echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse" > /etc/apt/sources.list  && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list && \
+    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse" >> /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
+        debconf \
         build-essential \
+        software-properties-common \
+	python-software-properties \
         cmake \
         git \
         curl \
@@ -31,7 +35,10 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         libnccl2=${NCCL_VERSION} \
         libnccl-dev=${NCCL_VERSION} \
         libjpeg-dev \
-        libpng-dev \
+        libpng-dev
+
+# add python3.6 repo
+RUN add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
         python${PYTHON_VERSION} \
         python${PYTHON_VERSION}-dev
 
