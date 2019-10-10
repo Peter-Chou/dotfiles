@@ -30,9 +30,13 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[*.{json,y{a,}ml}]
+[*.json]
 indent_style = space
 indent_size = 4
+
+[*.{y{a,}ml}]
+indent_style = space
+indent_size = 2
 
 # markdown, txt
 [*.{md,txt}]
@@ -43,3 +47,8 @@ trim_trailing_whitespace = false
 # Makefile build
 [Makefile]
 indent_style = tab
+
+# proto buffer
+[*.proto]
+indent_style = space
+indent_size = 2
