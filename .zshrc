@@ -5,7 +5,7 @@ bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/peter/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -150,9 +150,9 @@ if [ -f ~/.dir_colors ]; then
   eval `dircolors ~/.dir_colors`
 fi
 
-# if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
-#   eval `dbus-launch fcitx > /dev/null 2>&1`
-# fi
+if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
+  eval `dbus-launch fcitx > /dev/null 2>&1`
+fi
 
 alias ..="cd .."
 alias ...='cd ../..'
@@ -212,8 +212,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 
 # python, pipenv
-export PATH=/home/peter/miniconda3/bin:$PATH
-export PATH="$PATH:/home/peter/.local/bin"
+export PATH=$HOME/miniconda3/bin:$PATH
+export PATH="$PATH:$HOME/.local/bin"
 export PIPENV_PYPI_MIRROR="https://pypi.tuna.tsinghua.edu.cn/simple"
 export WORKON_HOME="$HOME/.virtualenvs"
 
