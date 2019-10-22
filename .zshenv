@@ -28,3 +28,15 @@ export PATH=$SBT_HOME/bin:$PATH
 
 # scala language server for emacs
 export PATH=$HOME/metals:$PATH
+
+# Golang
+# enable go module
+export GO111MODULE=on
+# use go.proxy
+export GOPROXY=https://goproxy.io,direct
+
+export GOROOT=$HOME/go
+export GOPATH=$HOME/go_path
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
+
