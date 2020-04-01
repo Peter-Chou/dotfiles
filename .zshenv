@@ -24,6 +24,8 @@ export PATH=$M2_HOME/bin:$PATH
 
 # sbt
 export SBT_HOME=$HOME/sbt
+# use global repository setting instead of project one
+export SBT_OPTS="-Dsbt.override.build.repos=true"
 export PATH=$SBT_HOME/bin:$PATH
 
 # scala language server for emacs
