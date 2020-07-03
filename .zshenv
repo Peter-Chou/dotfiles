@@ -10,7 +10,26 @@ export QT_IM_MODULE=fcitx
 export PATH=$HOME/miniconda3/bin:$PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PIPENV_PYPI_MIRROR="https://pypi.tuna.tsinghua.edu.cn/simple"
-export WORKON_HOME="$HOME/.virtualenvs"
+export WORKON_HOME="$HOME/miniconda3/envs"
+
+# llvm & clang
+export LLVM_HOME="/home/peter/llvm-10"
+export PATH=$LLVM_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$LLVM_HOME/lib:$LD_LIBRARY_PATH
+
+# clangd
+export PATH=$HOME/clangd-10/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/clangd-10/lib:$LD_LIBRARY_PATH
+
+# Golang
+# enable go module
+export GO111MODULE=on
+# use go.proxy
+export GOPROXY=https://goproxy.io,direct
+export GOROOT=$HOME/go
+export GOPATH=$HOME/go_path
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 # JAVA 
 export JAVA_HOME=$HOME/java/jdk1.8.0_221
@@ -31,14 +50,4 @@ export PATH=$SBT_HOME/bin:$PATH
 # scala language server for emacs
 export PATH=$HOME/metals:$PATH
 
-# Golang
-# enable go module
-export GO111MODULE=on
-# use go.proxy
-export GOPROXY=https://goproxy.io,direct
-
-export GOROOT=$HOME/go
-export GOPATH=$HOME/go_path
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin:$GOBIN
 
