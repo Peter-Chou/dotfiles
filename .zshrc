@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,6 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
+	  eval `dbus-launch fcitx > /dev/null 2>&1`
+fi
 
 if [ -f ~/.dir_colors ]; then
 	  eval `dircolors ~/.dir_colors`
@@ -119,22 +122,16 @@ __conda_setup="$('/home/peter/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/n
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/peter/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/peter/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="/home/peter/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 # wsl2 docker specific
-
-
-if [ $(ps -ax | grep dbus-daemon | wc -l) -eq 1 ]; then
-	  eval `dbus-launch fcitx > /dev/null 2>&1`
-fi
-
 service docker status > /dev/null || sudo service docker start
 
 export HOST_IP=$(grep -oP '(?<=nameserver\ ).*' /etc/resolv.conf)
@@ -206,6 +203,7 @@ function unproxy_docker() {
         echo "current docker proxy status: direct connect, not proxying"
 }
 
+
 # GLOBAL PROXY FOR BASH
 
 # if ~/.bash_proxy not exist , then create it.
@@ -231,3 +229,5 @@ function unproxy() {
     # declare
     echo "current proxy status:  direct connect, not proxying"
 }
+
+(( ! ${+functions[p10k]} )) || p10k finalize
