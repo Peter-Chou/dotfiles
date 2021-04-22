@@ -187,6 +187,7 @@ function test_setting(){
     echo "Current proxy:" $https_proxy
 }
 
+# see https://github.com/microsoft/WSL/issues/4619
 export winhost=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
 old_winhost=$(grep -P "[[:space:]]winhost" /etc/hosts | awk '{ print $1 }')
 
