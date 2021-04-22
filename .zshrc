@@ -131,104 +131,72 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+# emacs
+export EDITOR="emacs"
+alias e="$EDITOR -n"
+alias ec="$EDITOR -n -c"
+alias ef="$EDITOR -c"
+alias te="$EDITOR -a '' -nw"
+alias rte="$EDITOR -e '(let ((last-nonmenu-event nil) (kill-emacs-query-functions nil)) (save-buffers-kill-emacs t))' && te"
+
 # wsl2 docker specific
 service docker status > /dev/null || sudo service docker start
+hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
+wslip=$(hostname -I | awk '{print $1}')
+port=1080
 
-export HOST_IP=$(grep -oP '(?<=nameserver\ ).*' /etc/resolv.conf)
-export PORXY_ADDR="http://$HOST_IP:1080"
+PROXY_HTTP="http://${hostip}:${port}"
 
-# PROXY FOR APT
-function proxy_apt() {
-    # make sure apt.conf existed
-    sudo touch /etc/apt/apt.conf
-    sudo sed -i '/^Acquire::https\?::Proxy/d' /etc/apt/apt.conf
-    # add proxy
-    echo -e "Acquire::http::Proxy \"$PORXY_ADDR\";\nAcquire::https::Proxy \"$PORXY_ADDR\";" | sudo tee -a /etc/apt/apt.conf >/dev/null
-    echo "current apt proxy status: using $PORXY_ADDR, proxying"
+function set_proxy(){
+    export http_proxy="${PROXY_HTTP}"
+    export HTTP_PROXY="${PROXY_HTTP}"
+
+    export https_proxy="${PROXY_HTTP}"
+    export HTTPS_proxy="${PROXY_HTTP}"
+
+    export all_proxy="${PROXY_HTTP}"
+    export ALL_proxy="${PROXY_HTTP}"
+
+    git config --global http.proxy "${PROXY_HTTP}"
+    git config --global https.proxy "${PROXY_HTTP}"
 }
 
-function unproxy_apt() {
-    sudo sed -i '/^Acquire::https\?::Proxy/d' /etc/apt/apt.conf
-    echo "current apt proxy status: direct connect, not proxying"
+function unset_proxy(){
+    unset http_proxy
+    unset HTTP_PROXY
+    unset https_proxy
+    unset HTTPS_PROXY
+    unset all_proxy
+    unset ALL_PROXY
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
 }
 
-# PROXY FOR NPM
-function proxy_yarn() {
-    yarn config set proxy $PORXY_ADDR
-    yarn config set https-proxy $PORXY_ADDR
-    npm config set proxy $PORXY_ADDR
-    npm config set https-proxy $PORXY_ADDR
+function test_setting(){
+    echo "Host ip:" ${hostip}
+    echo "WSL ip:" ${wslip}
+    echo "Current proxy:" $https_proxy
 }
 
-function unproxy_yarn() {
-    yarn config delete proxy
-    yarn config delete https-proxy
-    npm config delete proxy
-    npm config delete https-proxy
-}
+export winhost=$(cat /etc/resolv.conf | grep nameserver | awk '{ print $2 }')
+old_winhost=$(grep -P "[[:space:]]winhost" /etc/hosts | awk '{ print $1 }')
 
-function proxy_npm() {
-    proxy_yarn
-}
-
-function unproxy_npm() {
-    unproxy_yarn
-}
-
-# if docker is not running, then start docker service
-# if docker running, then `:`, else `sudo service docker start`
-# The `:` Do nothing beyond expanding arguments and performing redirections. The return status is zero.
-# https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins
-ps -C dockerd 1>/dev/null && : || sudo service docker start 1>/dev/null
-
-# PROXY FOR DOCKER
-function proxy_docker() {
-    # make sure /etc/default/docker existed
-    sudo touch /etc/default/docker
-    sudo sed -i '/^export https\?_proxy/Id' /etc/default/docker
-    # add proxy
-    echo -e "export http_proxy=\"$PORXY_ADDR\";
-export https_proxy=\"$PORXY_ADDR\";
-export HTTP_PROXY=\"$PORXY_ADDR\";
-export HTTPS_PROXY=\"$PORXY_ADDR\";" | sudo tee -a /etc/default/docker >/dev/null &&
-        sudo service docker restart &&
-        echo "current docker proxy status: using $PORXY_ADDR, proxying"
-}
-
-function unproxy_docker() {
-    # sudo sed -i '/^Acquire::https\?::Proxy/d' /etc/apt/apt.conf
-    # 删除代理设置
-    sudo sed -i '/^export https\?_proxy/Id' /etc/default/docker &&
-        sudo service docker restart &&
-        echo "current docker proxy status: direct connect, not proxying"
-}
-
-
-# GLOBAL PROXY FOR BASH
-
-# if ~/.bash_proxy not exist , then create it.
-if [ ! -f ~/.bash_proxy ]; then
-    touch ~/.bash_proxy
+if [ -z $old_winhost ]; then
+	    echo "write winhost to /etc/hosts"
+	        echo -e "$winhost\twinhost" | sudo tee -a "/etc/hosts"
+	elif [ $old_winhost != $winhost ]; then
+		    echo "update winhost in /etc/hosts from $old_winhost to $winhost"
+		        sudo sed -i "s/$old_winhost\twinhost/$winhost\twinhost/g" /etc/hosts
 fi
-# execute ~/.bash_proxy
-. ~/.bash_proxy
-
-function proxy() {
-    echo -e "export {all_proxy,http_proxy,https_proxy,ALL_PROXY,HTTP_PROXY,HTTPS_PROXY}=\"$PORXY_ADDR\";" | tee ~/.bash_proxy >/dev/null
-    # apply
-    . ~/.bash_proxy
-    # declare
-    echo "current proxy status: using $PORXY_ADDR, proxying"
-}
-
-function unproxy() {
-    # unset all_proxy http_proxy https_proxy ALL_PROXY HTTP_PROXY HTTPS_PROXY
-    echo -e "unset all_proxy http_proxy https_proxy ALL_PROXY HTTP_PROXY HTTPS_PROXY" | tee ~/.bash_proxy >/dev/null
-    # apply
-    . ~/.bash_proxy
-    # declare
-    echo "current proxy status:  direct connect, not proxying"
-}
 
 vterm_printf(){
     if [ -n "$TMUX" ]; then
@@ -245,8 +213,5 @@ vterm_printf(){
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
     alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
-
-autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 
 (( ! ${+functions[p10k]} )) || p10k finalize

@@ -27,7 +27,7 @@ export LD_LIBRARY_PATH=$LLVM_HOME/lib:$LD_LIBRARY_PATH
 # # enable go module
 export GO111MODULE=on
 # # use go.proxy
-export GOPROXY=https://goproxy.io,direct
+# export GOPROXY=https://goproxy.io,direct
 export PATH=/opt/go/bin:$PATH
 export PATH=$PATH:/home/peter/go/bin
 #
@@ -56,14 +56,14 @@ export PATH=$HOME/cmake/bin:$PATH
 export PATH=$HOME/node/bin:$PATH
 
 # network
-export HOST_IP=$(grep -oP '(?<=nameserver\ ).*' /etc/resolv.conf)
-export PORXY_ADDR="http://${HOST_IP}:1080"
-export all_proxy="$PORXY_ADDR"
-export http_proxy="$PORXY_ADDR"
-export https_proxy="$PORXY_ADDR"
-export ALL_PROXY="$PORXY_ADDR"
-export HTTP_PROXY="$PORXY_ADDR"
-export HTTPS_PROXY="$PORXY_ADDR"
+# export HOST_IP=$(grep -oP '(?<=nameserver\ ).*' /etc/resolv.conf)
+# export PORXY_ADDR="http://${HOST_IP}:1080"
+# export all_proxy="$PORXY_ADDR"
+# export http_proxy="$PORXY_ADDR"
+# export https_proxy="$PORXY_ADDR"
+# export ALL_PROXY="$PORXY_ADDR"
+# export HTTP_PROXY="$PORXY_ADDR"
+# export HTTPS_PROXY="$PORXY_ADDR"
 
 # bazel-compdb
-export PATH=$PATH:$HOME/bazel-compilation-database
+# export PATH=$PATH:$HOME/bazel-compilation-database
