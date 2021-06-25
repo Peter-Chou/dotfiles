@@ -41,7 +41,7 @@ export M2_HOME=/opt/maven
 export PATH=$M2_HOME/bin:$PATH
 #
 # # sbt
-export SBT_HOME=$HOME/sbt
+export SBT_HOME=/opt/sbt
 # # use global repository setting instead of project one
 export SBT_OPTS="-Dsbt.override.build.repos=true"
 export PATH=$SBT_HOME/bin:$PATH
@@ -67,3 +67,6 @@ export PATH=$HOME/node/bin:$PATH
 
 # bazel-compdb
 # export PATH=$PATH:$HOME/bazel-compilation-database
+
+# protoc
+export PATH=/opt/protoc/bin:$PATH
