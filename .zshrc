@@ -199,11 +199,6 @@ if [ -z $old_winhost ]; then
 		        sudo sed -i "s/$old_winhost\twinhost/$winhost\twinhost/g" /etc/hosts
 fi
 
-if [ -z $google_nameserver ]; then
-    echo nameserver 8.8.8.8 | sudo tee -a /etc/resolv.conf  && google_nameserver="8.8.8.8"
-
-fi
-
 vterm_printf(){
     if [ -n "$TMUX" ]; then
         # Tell tmux to pass the escape sequences through
