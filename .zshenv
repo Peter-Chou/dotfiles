@@ -3,6 +3,9 @@ export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 # export LIBGL_ALWAYS_INDIRECT=1
 export LIBGL_ALWAYS_SOFTWARE=1
 
+### for emacs 
+export LSP_USE_PLISTS=true
+
 export NO_AT_BRIDGE=1
 
 export XMODIFIERS=@im=fcitx
