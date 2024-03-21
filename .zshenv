@@ -21,13 +21,9 @@ export WORKON_HOME="$HOME/miniconda3/envs"
 # llvm & clang & clangd
 export LLVM_HOME="/opt/llvm"
 export PATH=$LLVM_HOME/bin:$PATH
-#export LD_LIBRARY_PATH=$LLVM_HOME/lib:$LD_LIBRARY_PATH
-#export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/opt/llvm/include/c++/v1
+# export LD_LIBRARY_PATH=$LLVM_HOME/lib:$LD_LIBRARY_PATH
+# export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/opt/llvm/include/c++/v1
 # export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/c++/9:/usr/include/c++/9/backward
-
-# clangd
-# export PATH=$HOME/clangd-10/bin:$PATH
-# export LD_LIBRARY_PATH=$HOME/clangd-10/lib:$LD_LIBRARY_PATH
 
 # Golang
 # enable go module
@@ -69,10 +65,12 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=/opt/protoc/bin:$PATH
 
 # ## emacs
-export PATH=/home/peter/emacs-28.1/src:$PATH
+export PATH=/home/peter/emacs29.2/src:$PATH
+
+# emacs-lsp-booster
+export PATH=$PATH:/opt/emacs-lsp-booster/bin
 
 # nvim
 export PATH=$HOME/nvim/bin:$PATH:/mnt/c/neovim/bin
 
 . "$HOME/.cargo/env"
-
