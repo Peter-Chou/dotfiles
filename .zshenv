@@ -1,3 +1,6 @@
+# snap
+export PATH=/snap/bin:$PATH
+
 # python, pipenv
 export PATH=$PATH:$HOME/miniconda3/bin
 export PATH="$PATH:$HOME/.local/bin"
@@ -20,9 +23,6 @@ export PATH=$M2_HOME/bin:$PATH
 # cmake
 export PATH=$HOME/cmake/bin:$PATH
 
-# cmake lsp
-export PATH=/opt/neocmakelsp/bin:$PATH
-
 # node
 export PATH=$HOME/node/bin:$PATH
 
@@ -41,6 +41,16 @@ export PATH=/home/peter/emacs-30.1/src:$PATH
 
 # emacs-lsp-booster
 export PATH=$PATH:/opt/emacs-lsp-booster/bin
+
+# ### emacs lsps
+# cmake lsp
+export PATH=/opt/neocmakelsp/bin:$PATH
+
+# markdown lsp
+export PATH=/opt/marksman/bin:$PATH
+
+# ### emacs formatters
+export PATH=/opt/shfmt/bin:$PATH
 
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
