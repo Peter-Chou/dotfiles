@@ -42,4 +42,6 @@ export PATH=/home/peter/emacs-30.1/src:$PATH
 # emacs-lsp-booster
 export PATH=$PATH:/opt/emacs-lsp-booster/bin
 
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+
 . "$HOME/.cargo/env"
