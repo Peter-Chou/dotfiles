@@ -6,7 +6,6 @@ export PATH=$PATH:$HOME/miniconda3/bin
 export PATH="$PATH:$HOME/.local/bin"
 export PIPENV_PYPI_MIRROR="https://pypi.tuna.tsinghua.edu.cn/simple"
 export WORKON_HOME="$HOME/miniconda3/envs"
-export PYTHONPATH=".:$PYTHONPATH"
 
 # llvm & clang & clangd
 export LLVM_HOME="/opt/llvm"
